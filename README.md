@@ -9,6 +9,8 @@ https://doi.org/10.1038/srep37969
 
 Explanation video by the authors of the article (not this implementation):
 
+_How life emerges from a simple particle motion law: Introducing the Primordial Particle System_
+
 [![Video: How life emerges from a simple particle motion law: Introducing the Primordial Particle System](https://img.youtube.com/vi/makaJpLvbow/0.jpg)](https://www.youtube.com/watch?v=makaJpLvbow)
 
 ## Installation
@@ -28,10 +30,10 @@ It uses the following parameter set (as described in the article) by default:
 
 PPS =〈r=5, α=180°, β=17°, v=0.67〉
 
-The parameters can be modified via command line flags:
+The parameters and the particle density (DPE) can be modified via command line flags:
 
 ```
-$ pps-simulate -r=4 -alpha=180 -beta=17 -v=0.67
+$ pps-simulate -r=4 -alpha=180 -beta=17 -v=0.67 -dpe=0.08
 ```
 
 The port is configurable as well:
