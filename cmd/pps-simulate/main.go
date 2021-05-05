@@ -39,7 +39,7 @@ func main() {
 	}
 	DPE := *dpe
 
-	fmt.Println("Listening on " + httpLink(*http))
+	fmt.Println("Visit " + httpLink(*http) + " in a web browser")
 	err := canvas.ListenAndServe(*http, func(ctx *canvas.Context) { run(ctx, params, DPE) },
 		canvas.Title("Primordial Particle System"),
 		canvas.Size(int(size.X*scaling.X), int(size.Y*scaling.Y)),
