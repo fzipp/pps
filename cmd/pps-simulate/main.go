@@ -24,10 +24,23 @@ var (
 
 func main() {
 	http := flag.String("http", ":8080", "HTTP service address (e.g., '127.0.0.1:8080' or just ':8080')")
+	alpha := flag.Float64("alpha", 180.0, "Alpha angle (α) in degrees")
+	beta := flag.Float64("beta", 17.0, "Beta angle (β) in degrees")
+	velocity := flag.Float64("v", 0.67, "Velocity in space units per time step")
+	radius := flag.Float64("r", 5.0, "Radius in space units")
+	dpe := flag.Float64("dpe", 0.08, "Density in particles per space unit (p/su)")
 	flag.Parse()
 
+	params := pps.ParamSet{
+		Alpha:    *alpha,
+		Beta:     *beta,
+		Velocity: *velocity,
+		Radius:   *radius,
+	}
+	DPE := *dpe
+
 	fmt.Println("Listening on " + httpLink(*http))
-	err := canvas.ListenAndServe(*http, run,
+	err := canvas.ListenAndServe(*http, func(ctx *canvas.Context) { run(ctx, params, DPE) },
 		canvas.Title("Primordial Particle System"),
 		canvas.Size(int(size.X*scaling.X), int(size.Y*scaling.Y)),
 		canvas.ScaleFullPage(false, true),
@@ -37,16 +50,10 @@ func main() {
 	}
 }
 
-func run(ctx *canvas.Context) {
-	DPE := 0.08
+func run(ctx *canvas.Context, params pps.ParamSet, DPE float64) {
 	particles := int(size.X * size.Y * DPE)
 	rand.Seed(time.Now().UnixNano())
-	u := pps.NewUniverse(size, particles, pps.ParamSet{
-		Alpha:    180,
-		Beta:     17,
-		Velocity: 0.67,
-		Radius:   5.0,
-	})
+	u := pps.NewUniverse(size, particles, params)
 
 	ctx.Scale(scaling.X, scaling.Y)
 	for {
