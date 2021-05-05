@@ -7,6 +7,10 @@ Schmickl, T., Stefanec, M. & Crailsheim, K.
 Sci Rep 6, 37969 (2016).
 https://doi.org/10.1038/srep37969
 
+Explanation video by the authors of the article (not this implementation):
+
+[![Video: How life emerges from a simple particle motion law: Introducing the Primordial Particle System](https://img.youtube.com/vi/makaJpLvbow/0.jpg)](https://www.youtube.com/watch?v=makaJpLvbow)
+
 ## Install
 
 ```
