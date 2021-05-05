@@ -36,7 +36,7 @@ func (u *Universe) Step() {
 	for i, p := range u.Particles {
 		dir := p.Dir()
 
-		p.Pos = p.Pos.Add(dir.Mul(ps.Velocity))
+		p.Pos = p.Pos.add(dir.mul(ps.Velocity))
 		p.Pos.X = wrap(p.Pos.X, u.Size.X)
 		p.Pos.Y = wrap(p.Pos.Y, u.Size.Y)
 
@@ -64,7 +64,7 @@ func (u *Universe) neighbours(pos, dir Vec2, i int) (L, R int) {
 			continue
 		}
 		if withinRadius(pos, p.Pos, r) {
-			if isLeft(pos, pos.Add(dir), p.Pos) {
+			if isLeft(pos, pos.add(dir), p.Pos) {
 				L++
 			} else {
 				R++
@@ -79,7 +79,7 @@ func isLeft(a, b, p Vec2) bool {
 }
 
 func withinRadius(a, b Vec2, r float64) bool {
-	return a.Dist(b) <= r
+	return a.dist(b) <= r
 }
 
 var (

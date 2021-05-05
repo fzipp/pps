@@ -11,30 +11,30 @@ type Vec2 struct {
 	Y float64
 }
 
-func (v Vec2) Dist(w Vec2) float64 {
-	return v.Sub(w).Len()
+func (v Vec2) dist(w Vec2) float64 {
+	return v.sub(w).len()
 }
 
-func (v Vec2) Add(w Vec2) Vec2 {
+func (v Vec2) add(w Vec2) Vec2 {
 	return Vec2{v.X + w.X, v.Y + w.Y}
 }
 
-func (v Vec2) Sub(w Vec2) Vec2 {
+func (v Vec2) sub(w Vec2) Vec2 {
 	return Vec2{v.X - w.X, v.Y - w.Y}
 }
 
-func (v Vec2) Len() float64 {
-	return math.Sqrt(v.SqLen())
+func (v Vec2) len() float64 {
+	return math.Sqrt(v.sqLen())
 }
 
-func (v Vec2) SqLen() float64 {
-	return v.Dot(v)
+func (v Vec2) sqLen() float64 {
+	return v.dot(v)
 }
 
-func (v Vec2) Dot(w Vec2) float64 {
+func (v Vec2) dot(w Vec2) float64 {
 	return v.X*w.X + v.Y*w.Y
 }
 
-func (v Vec2) Mul(s float64) Vec2 {
+func (v Vec2) mul(s float64) Vec2 {
 	return Vec2{v.X * s, v.Y * s}
 }
