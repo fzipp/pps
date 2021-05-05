@@ -11,10 +11,39 @@ Explanation video by the authors of the article (not this implementation):
 
 [![Video: How life emerges from a simple particle motion law: Introducing the Primordial Particle System](https://img.youtube.com/vi/makaJpLvbow/0.jpg)](https://www.youtube.com/watch?v=makaJpLvbow)
 
-## Install
+## Installation
 
 ```
-go install github.com/fzipp/pps/cmd/pps-simulate@latest
+$ go install github.com/fzipp/pps/cmd/pps-simulate@latest
+```
+
+## Usage
+
+```
+$ pps-simulate
+Visit http://localhost:8080 in a web browser
+```
+
+It uses the following parameter set (as described in the article) by default:
+
+PPS =〈r=5, α=180°, β=17°, v=0.67〉
+
+The parameters can be modified via command line flags:
+
+```
+$ pps-simulate -r=4 -alpha=180 -beta=17 -v=0.67
+```
+
+The port is configurable as well:
+
+```
+$ pps-simulate -http=:6060
+```
+
+Get help about the flags:
+
+```
+$ pps-simulate -help
 ```
 
 ## License
