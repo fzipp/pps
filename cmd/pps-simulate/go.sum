@@ -1,4 +1,6 @@
 github.com/fzipp/canvas v0.3.0 h1:EinFUSrg+ykfB7zGVDggU07RL9MHpzQlrNjaqQHZJB4=
 github.com/fzipp/canvas v0.3.0/go.mod h1:f8a8wUFBxEBcZkyAdDdVxwwhiIODnGAlHKu3DE6SH8c=
+github.com/fzipp/pps v0.0.0-20210505161907-1cf02931d2bc h1:RiY21X34k9M0U1/gdon9iH8z/l5GZlNstlWufRsJtV8=
+github.com/fzipp/pps v0.0.0-20210505161907-1cf02931d2bc/go.mod h1:W86nH4lPftoy9H1bvCoBsrzr1VN1hJWJueL3ocGJ/00=
 github.com/gorilla/websocket v1.4.2 h1:+/TMaTYc4QFitKJxsQ7Yye35DkWvkdLcvGKqM+x0Ufc=
 github.com/gorilla/websocket v1.4.2/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/adAjf1fMHhE=
