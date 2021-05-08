@@ -11,16 +11,14 @@ import (
 	"log"
 	"math"
 	"math/rand"
+	"os"
 	"time"
 
 	"github.com/fzipp/canvas"
 	"github.com/fzipp/pps"
 )
 
-var (
-	size    = pps.Vec2{X: 100, Y: 100}
-	scaling = pps.Vec2{X: 7, Y: 7}
-)
+var scaling = pps.Vec2{X: 7, Y: 7}
 
 func main() {
 	http := flag.String("http", ":8080", "HTTP service address (e.g., '127.0.0.1:8080' or just ':8080')")
@@ -29,7 +27,16 @@ func main() {
 	velocity := flag.Float64("v", 0.67, "Velocity in space units per time step")
 	radius := flag.Float64("r", 5.0, "Radius in space units")
 	dpe := flag.Float64("dpe", 0.08, "Density in particles per space unit (p/su)")
+	sizeFlag := flag.String("size", "100x100", "Size of universe as `WIDTHxHEIGHT in space units`")
 	flag.Parse()
+
+	var size pps.Vec2
+	_, err := fmt.Sscanf(*sizeFlag, "%gx%g", &size.X, &size.Y)
+	if err != nil {
+		_, _ = fmt.Fprintln(os.Stderr, "Invalid value of -size flag.")
+		flag.Usage()
+		os.Exit(1)
+	}
 
 	params := pps.ParamSet{
 		Alpha:    *alpha,
@@ -40,7 +47,7 @@ func main() {
 	DPE := *dpe
 
 	fmt.Println("Visit " + httpLink(*http) + " in a web browser")
-	err := canvas.ListenAndServe(*http, func(ctx *canvas.Context) { run(ctx, params, DPE) },
+	err = canvas.ListenAndServe(*http, func(ctx *canvas.Context) { run(ctx, params, size, DPE) },
 		canvas.Title("Primordial Particle System"),
 		canvas.Size(int(size.X*scaling.X), int(size.Y*scaling.Y)),
 		canvas.ScaleFullPage(false, true),
@@ -50,7 +57,7 @@ func main() {
 	}
 }
 
-func run(ctx *canvas.Context, params pps.ParamSet, DPE float64) {
+func run(ctx *canvas.Context, params pps.ParamSet, size pps.Vec2, DPE float64) {
 	particles := int(size.X * size.Y * DPE)
 	rand.Seed(time.Now().UnixNano())
 	u := pps.NewUniverse(size, particles, params)
