@@ -24,13 +24,11 @@ func deg2rad(deg float64) (rad float64) {
 }
 
 func wrap(n, max float64) float64 {
-	if n > max {
-		return n - max
+	mod := math.Mod(n, max)
+	if mod < 0 {
+		return max + mod
 	}
-	if n < 0 {
-		return max + n
-	}
-	return n
+	return mod
 }
 
 const epsilon = 1e-10

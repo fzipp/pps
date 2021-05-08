@@ -62,9 +62,19 @@ func TestWrap(t *testing.T) {
 	}{
 		{n: 0, max: 100, want: 0},
 		{n: -1, max: 100, want: 99},
+
 		{n: 255, max: 250, want: 5},
 		{n: 300, max: 250, want: 50},
 		{n: -2.5, max: 250, want: 247.5},
+
+		{n: 4, max: 5, want: 4},
+		{n: 5, max: 5, want: 0},
+		{n: 6, max: 5, want: 1},
+		{n: 10, max: 5, want: 0},
+		{n: -4, max: 5, want: 1},
+		{n: -5, max: 5, want: 0},
+		{n: -6, max: 5, want: 4},
+		{n: -10, max: 5, want: 0},
 	}
 	for _, tt := range tests {
 		got := wrap(tt.n, tt.max)
