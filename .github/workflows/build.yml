@@ -13,3 +13,5 @@ jobs:
           go-version: '1.16'
       - name: Run tests
         run: go test -cover ./...
+      - name: Run benchmarks
+        run: go test -bench .
