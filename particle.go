@@ -17,6 +17,7 @@ type Particle struct {
 	Color color.Color
 }
 
+// Dir returns the normed direction vector of the particle.
 func (p *Particle) Dir() Vec2 {
 	angleRad := deg2rad(p.Angle)
 	return Vec2{

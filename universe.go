@@ -2,6 +2,10 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+// Package pps is an implementation of the Primordial Particle System (PPS)
+// described in: Schmickl, T., Stefanec, M. & Crailsheim, K.
+// How a life-like system emerges from a simplistic particle motion law.
+// Sci Rep 6, 37969 (2016). https://doi.org/10.1038/srep37969
 package pps
 
 import "image/color"
@@ -57,6 +61,12 @@ func (u *Universe) Step() {
 	}
 }
 
+// neighbours returns the number of neighbours on the left side (L) and on the
+// right side (R) of a particle at position 'pos' with direction 'dir'.
+// The left side and the right side are semicircles with the radius from the
+// universe's parameter set. The sum N=L+R is the total number of neighbours
+// within this radius. Parameter i is the index of the particle in the
+// universe's Particles slice.
 func (u *Universe) neighbours(pos, dir Vec2, i int) (L, R int) {
 	r := u.ParamSet.Radius
 	for j, p := range u.Particles {
@@ -64,7 +74,7 @@ func (u *Universe) neighbours(pos, dir Vec2, i int) (L, R int) {
 			continue
 		}
 		if withinRadius(pos, p.Pos, r) {
-			if isLeft(pos, pos.add(dir), p.Pos) {
+			if isLeft(p.Pos, pos, pos.add(dir)) {
 				L++
 			} else {
 				R++
@@ -74,7 +84,9 @@ func (u *Universe) neighbours(pos, dir Vec2, i int) (L, R int) {
 	return
 }
 
-func isLeft(a, b, p Vec2) bool {
+// isLeft reports whether point p is to the left side of the line
+// through a and b.
+func isLeft(p, a, b Vec2) bool {
 	return (p.X-a.X)*(b.Y-a.Y)-(p.Y-a.Y)*(b.X-a.X) > 0
 }
 
@@ -90,6 +102,7 @@ var (
 	colorMagenta = color.RGBA{R: 0xff, G: 0, B: 0xff, A: 0xff}
 )
 
+// particleColor returns the color for a particle with N neighbours.
 func particleColor(N int) color.Color {
 	if N < 13 {
 		return colorGreen
