@@ -30,10 +30,11 @@ It uses the following parameter set (as described in the article) by default:
 
 PPS =〈r=5, α=180°, β=17°, v=0.67〉
 
-The parameters and the particle density (DPE) can be modified via command line flags:
+The parameters, the particle density (DPE) and the size of the universe
+can be modified via command line flags:
 
 ```
-$ pps-simulate -r=4 -alpha=180 -beta=17 -v=0.67 -dpe=0.08
+$ pps-simulate -r=4 -alpha=180 -beta=17 -v=0.67 -dpe=0.08 -size=150x150
 ```
 
 The port is configurable as well:
