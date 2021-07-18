@@ -14,6 +14,10 @@ func BenchmarkUniverseStep400x400(b *testing.B) {
 	benchmarkUniverseStep(b, Vec2{X: 400, Y: 400})
 }
 
+func BenchmarkUniverseStep800x800(b *testing.B) {
+	benchmarkUniverseStep(b, Vec2{X: 800, Y: 800})
+}
+
 func benchmarkUniverseStep(b *testing.B, size Vec2) {
 	params := ParamSet{
 		Alpha:    180,
