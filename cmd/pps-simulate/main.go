@@ -27,7 +27,7 @@ func main() {
 	velocity := flag.Float64("v", 0.67, "Velocity in space units per time step")
 	radius := flag.Float64("r", 5.0, "Radius in space units")
 	dpe := flag.Float64("dpe", 0.08, "Density in particles per space unit (p/su)")
-	sizeFlag := flag.String("size", "100x100", "Size of universe as `WIDTHxHEIGHT in space units`")
+	sizeFlag := flag.String("size", "150x150", "Size of universe as `WIDTHxHEIGHT in space units`")
 	flag.Parse()
 
 	var size pps.Vec2
