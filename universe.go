@@ -55,7 +55,7 @@ func (u *Universe) Step() {
 		pos.Y = wrap(pos.Y, u.Size.Y)
 		u.grid.updatePos(p, pos)
 
-		L, R := u.grid.neighbours(p, ps.Radius)
+		L, R, NClose := u.grid.neighbours(p, ps.Radius, 1.3)
 		N := L + R
 		deltaPhi := ps.Alpha + ps.Beta*float64(N*sign(R-L))
 		p.Angle += deltaPhi
@@ -66,7 +66,7 @@ func (u *Universe) Step() {
 			p.Angle -= 360
 		}
 
-		p.Color = particleColor(N)
+		p.Color = particleColor(N, NClose)
 	}
 }
 
@@ -78,8 +78,12 @@ var (
 	colorMagenta = color.RGBA{R: 0xff, G: 0, B: 0xff, A: 0xff}
 )
 
-// particleColor returns the color for a particle with N neighbours.
-func particleColor(N int) color.Color {
+// particleColor returns the color for a particle with N neighbours,
+// of which NClose are close neighbours.
+func particleColor(N, NClose int) color.Color {
+	if NClose > 15 {
+		return colorMagenta
+	}
 	if N < 13 {
 		return colorGreen
 	}

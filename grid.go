@@ -53,12 +53,11 @@ func (g *particleGrid) cell(pos Vec2) gridCell {
 }
 
 // neighbours returns the number of neighbours within radius r on the left
-// side (L) and on the right side (R) of a particle p.
-// The left side and the right side are semicircles with the radius from the
-// universe's parameter set. The sum N=L+R is the total number of neighbours
-// within this radius. Parameter i is the index of the particle in the
-// universe's Particles slice.
-func (g *particleGrid) neighbours(p *Particle, r float64) (L, R int) {
+// side (L) and on the right side (R) of a particle p, as well as the number
+// of close neighbours NClose, which are within radius rClose.
+// The left side and the right side are semicircles with the radius r.
+// The sum N=L+R is the total number of neighbours within this radius.
+func (g *particleGrid) neighbours(p *Particle, r, rClose float64) (L, R, NClose int) {
 	center := g.cell(p.Pos)
 	for dx := -1; dx <= 1; dx++ {
 		for dy := -1; dy <= 1; dy++ {
@@ -68,11 +67,15 @@ func (g *particleGrid) neighbours(p *Particle, r float64) (L, R int) {
 				}
 				pos := p.Pos
 				nPos := np.Pos
-				if withinRadius(pos, nPos, r) {
+				d := pos.dist(nPos)
+				if d <= r {
 					if isLeft(nPos, pos, pos.add(p.Dir())) {
 						L++
 					} else {
 						R++
+					}
+					if d <= rClose {
+						NClose++
 					}
 				}
 			}
@@ -85,8 +88,4 @@ func (g *particleGrid) neighbours(p *Particle, r float64) (L, R int) {
 // through a and b.
 func isLeft(p, a, b Vec2) bool {
 	return (p.X-a.X)*(b.Y-a.Y)-(p.Y-a.Y)*(b.X-a.X) > 0
-}
-
-func withinRadius(a, b Vec2, r float64) bool {
-	return a.dist(b) <= r
 }

@@ -27,39 +27,3 @@ func TestIsLeft(t *testing.T) {
 		}
 	}
 }
-
-func TestWithinRadius(t *testing.T) {
-	tests := []struct {
-		a, b Vec2
-		r    float64
-		want bool
-	}{
-		{a: Vec2{X: 100, Y: 80}, b: Vec2{100, 80}, r: 5, want: true},
-		{a: Vec2{X: 100, Y: 80}, b: Vec2{100, 82}, r: 5, want: true},
-		{a: Vec2{X: 100, Y: 80}, b: Vec2{100, 85}, r: 5, want: true},
-		{a: Vec2{X: 100, Y: 80}, b: Vec2{100, 85.1}, r: 5, want: false},
-		{a: Vec2{X: 100, Y: 80}, b: Vec2{100, 75}, r: 5, want: true},
-		{a: Vec2{X: 100, Y: 80}, b: Vec2{100, 74.9}, r: 5, want: false},
-		{a: Vec2{X: 100, Y: 80}, b: Vec2{99, 80}, r: 5, want: true},
-		{a: Vec2{X: 100, Y: 80}, b: Vec2{95, 80}, r: 5, want: true},
-		{a: Vec2{X: 100, Y: 80}, b: Vec2{94.9, 80}, r: 5, want: false},
-		{a: Vec2{X: 100, Y: 80}, b: Vec2{104, 80}, r: 5, want: true},
-		{a: Vec2{X: 100, Y: 80}, b: Vec2{105, 80}, r: 5, want: true},
-		{a: Vec2{X: 100, Y: 80}, b: Vec2{105.1, 80}, r: 5, want: false},
-		{a: Vec2{X: 100, Y: 80}, b: Vec2{103, 83}, r: 5, want: true},
-		{a: Vec2{X: 100, Y: 80}, b: Vec2{103.6, 83.6}, r: 5, want: false},
-
-		{a: Vec2{X: 50, Y: 70}, b: Vec2{50, 60}, r: 10, want: true},
-		{a: Vec2{X: 50, Y: 60}, b: Vec2{50, 70}, r: 10, want: true},
-		{a: Vec2{X: 40, Y: 60}, b: Vec2{50, 60}, r: 10, want: true},
-		{a: Vec2{X: 60, Y: 60}, b: Vec2{50, 60}, r: 10, want: true},
-		{a: Vec2{X: 50, Y: 70}, b: Vec2{50, 59.9}, r: 10, want: false},
-	}
-	for _, tt := range tests {
-		got := withinRadius(tt.a, tt.b, tt.r)
-		if got != tt.want {
-			t.Errorf("withinRadius(a: %v, b: %v, r: %g) = %v, want %v",
-				tt.a, tt.b, tt.r, got, tt.want)
-		}
-	}
-}

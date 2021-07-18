@@ -11,8 +11,9 @@ import (
 
 func TestParticleColor(t *testing.T) {
 	tests := []struct {
-		N    int
-		want color.Color
+		N      int
+		NClose int
+		want   color.Color
 	}{
 		{N: 0, want: colorGreen},
 		{N: 1, want: colorGreen},
@@ -25,7 +26,7 @@ func TestParticleColor(t *testing.T) {
 		{N: 50, want: colorYellow},
 	}
 	for _, tt := range tests {
-		got := particleColor(tt.N)
+		got := particleColor(tt.N, tt.NClose)
 		if got != tt.want {
 			t.Errorf("particleColor(N: %d) = %v, want %v",
 				tt.N, got, tt.want)
