@@ -11,7 +11,7 @@ Explanation video by the authors of the article (not this implementation):
 
 _How life emerges from a simple particle motion law: Introducing the Primordial Particle System_
 
-[![Video: How life emerges from a simple particle motion law: Introducing the Primordial Particle System](https://img.youtube.com/vi/makaJpLvbow/0.jpg)](https://www.youtube.com/watch?v=makaJpLvbow)
+[![Video: How life emerges from a simple particle motion law: Introducing the Primordial Particle System](https://img.youtube.com/vi/makaJpLvbow/maxresdefault.jpg)](https://www.youtube.com/watch?v=makaJpLvbow)
 
 ## Installation
 
