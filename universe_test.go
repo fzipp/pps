@@ -24,12 +24,17 @@ func TestParticleColor(t *testing.T) {
 		{N: 35, want: colorBlue},
 		{N: 36, want: colorYellow},
 		{N: 50, want: colorYellow},
+		{N: 50, NClose: 14, want: colorYellow},
+		{N: 20, NClose: 16, want: colorMagenta},
+		{N: 20, NClose: 17, want: colorMagenta},
+		{N: 35, NClose: 16, want: colorMagenta},
+		{N: 50, NClose: 16, want: colorMagenta},
 	}
 	for _, tt := range tests {
 		got := particleColor(tt.N, tt.NClose)
 		if got != tt.want {
-			t.Errorf("particleColor(N: %d) = %v, want %v",
-				tt.N, got, tt.want)
+			t.Errorf("particleColor(N: %d, NClose: %d) = %v, want %v",
+				tt.N, tt.NClose, got, tt.want)
 		}
 	}
 }

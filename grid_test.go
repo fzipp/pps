@@ -6,6 +6,27 @@ package pps
 
 import "testing"
 
+func TestGridCellAdd(t *testing.T) {
+	tests := []struct {
+		c    gridCell
+		x, y int
+		want gridCell
+	}{
+		{c: gridCell{x: 3, y: 4}, x: 0, y: 0, want: gridCell{x: 3, y: 4}},
+		{c: gridCell{x: 3, y: 4}, x: 1, y: 1, want: gridCell{x: 4, y: 5}},
+		{c: gridCell{x: 3, y: 4}, x: -1, y: 0, want: gridCell{x: 2, y: 4}},
+		{c: gridCell{x: 3, y: 4}, x: -1, y: -1, want: gridCell{x: 2, y: 3}},
+		{c: gridCell{x: 6, y: 5}, x: 1, y: -1, want: gridCell{x: 7, y: 4}},
+	}
+	for _, tt := range tests {
+		got := tt.c.add(tt.x, tt.y)
+		if got != tt.want {
+			t.Errorf("%v.add(x: %d, y: %d) = %v, want %v",
+				tt.c, tt.x, tt.y, got, tt.want)
+		}
+	}
+}
+
 func TestIsLeft(t *testing.T) {
 	tests := []struct {
 		a, b, p Vec2
