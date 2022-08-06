@@ -20,11 +20,12 @@ type Universe struct {
 	grid      particleGrid
 }
 
+// A ParamSet is a parameter set of a PPS.
 type ParamSet struct {
-	Alpha    float64
-	Beta     float64
-	Velocity float64
-	Radius   float64
+	Alpha    float64 // Alpha angle (α) in degrees
+	Beta     float64 // Beta angle (β) in degrees
+	Velocity float64 // Velocity in space units per time step
+	Radius   float64 // Radius in space units
 }
 
 func NewUniverse(size Vec2, particleCount int, ps ParamSet) *Universe {
