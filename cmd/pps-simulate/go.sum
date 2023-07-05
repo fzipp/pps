@@ -1,6 +1,7 @@
-github.com/fzipp/canvas v0.3.0 h1:EinFUSrg+ykfB7zGVDggU07RL9MHpzQlrNjaqQHZJB4=
-github.com/fzipp/canvas v0.3.0/go.mod h1:f8a8wUFBxEBcZkyAdDdVxwwhiIODnGAlHKu3DE6SH8c=
+github.com/fzipp/canvas v0.4.0 h1:rdMu73yzPgDAuyZHez5pfX1v6cVMWP9ikuXxzh69kMk=
+github.com/fzipp/canvas v0.4.0/go.mod h1:k4V/4an1tCIOR4RrXcDtuUzGU19wfOkl7qUySmBjvgw=
 github.com/fzipp/pps v0.2.0 h1:eJA63KYuBS9lOMcXGdeJDc4tzfbRk1dZqw303iYDyII=
 github.com/fzipp/pps v0.2.0/go.mod h1:W86nH4lPftoy9H1bvCoBsrzr1VN1hJWJueL3ocGJ/00=
-github.com/gorilla/websocket v1.4.2 h1:+/TMaTYc4QFitKJxsQ7Yye35DkWvkdLcvGKqM+x0Ufc=
-github.com/gorilla/websocket v1.4.2/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/adAjf1fMHhE=
+github.com/google/go-cmp v0.5.9 h1:O2Tfq5qg4qc4AmwVlvv0oLiVAGB7enBSJ2x2DqQFi38=
+github.com/gorilla/websocket v1.5.0 h1:PPwGk2jz7EePpoHN/+ClbZu8SPxiqlu12wZP/3sWmnc=
+github.com/gorilla/websocket v1.5.0/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/adAjf1fMHhE=
