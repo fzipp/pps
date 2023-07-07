@@ -48,10 +48,12 @@ func main() {
 
 	fmt.Println("Visit " + httpLink(*http) + " in a web browser")
 	err = canvas.ListenAndServe(*http, func(ctx *canvas.Context) { run(ctx, params, size, DPE) },
-		canvas.Title("Primordial Particle System"),
-		canvas.Size(int(size.X*scaling.X), int(size.Y*scaling.Y)),
-		canvas.ScaleFullPage(false, true),
-	)
+		&canvas.Options{
+			Title:             "Primordial Particle System",
+			Width:             int(size.X * scaling.X),
+			Height:            int(size.Y * scaling.Y),
+			ScaleToPageHeight: true,
+		})
 	if err != nil {
 		log.Fatal(err)
 	}
