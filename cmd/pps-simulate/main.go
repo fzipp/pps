@@ -7,12 +7,13 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/fzipp/canvas"
-	"github.com/fzipp/pps"
 	"image/color"
 	"log"
 	"math"
 	"os"
+
+	"github.com/fzipp/canvas"
+	"github.com/fzipp/pps"
 )
 
 var scaling = pps.Vec2{X: 7, Y: 7}
