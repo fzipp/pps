@@ -7,15 +7,12 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/fzipp/canvas"
+	"github.com/fzipp/pps"
 	"image/color"
 	"log"
 	"math"
-	"math/rand"
 	"os"
-	"time"
-
-	"github.com/fzipp/canvas"
-	"github.com/fzipp/pps"
 )
 
 var scaling = pps.Vec2{X: 7, Y: 7}
@@ -61,7 +58,6 @@ func main() {
 
 func run(ctx *canvas.Context, params pps.ParamSet, size pps.Vec2, DPE float64) {
 	particles := int(size.X * size.Y * DPE)
-	rand.Seed(time.Now().UnixNano())
 	u := pps.NewUniverse(size, particles, params)
 
 	ctx.Scale(scaling.X, scaling.Y)
