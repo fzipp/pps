@@ -30,7 +30,7 @@ func benchmarkUniverseStep(b *testing.B, size Vec2) {
 		Radius:   5.0,
 	}
 	u := NewUniverse(size, int(size.X*size.Y*0.08), params)
-	for n := 0; n < b.N; n++ {
+	for range b.N {
 		u.Step()
 	}
 }

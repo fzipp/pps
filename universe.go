@@ -32,7 +32,7 @@ func NewUniverse(size Vec2, particleCount int, ps ParamSet) *Universe {
 	particles := make([]Particle, particleCount)
 	cellSize := int(math.Ceil(ps.Radius))
 	grid := makeParticleGrid(cellSize)
-	for i := 0; i < particleCount; i++ {
+	for i := range particleCount {
 		particles[i] = randomParticle(size)
 		grid.addParticle(&particles[i])
 	}
