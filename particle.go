@@ -7,7 +7,7 @@ package pps
 import (
 	"image/color"
 	"math"
-	"math/rand"
+	"math/rand/v2"
 )
 
 type Particle struct {
