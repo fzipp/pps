@@ -1,6 +1,6 @@
 module github.com/fzipp/pps/cmd/pps-simulate
 
-go 1.22.0
+go 1.23.0
 
 require (
 	github.com/fzipp/canvas v0.5.0
@@ -9,5 +9,5 @@ require (
 
 require (
 	github.com/gorilla/websocket v1.5.1 // indirect
-	golang.org/x/net v0.24.0 // indirect
+	golang.org/x/net v0.33.0 // indirect
 )
