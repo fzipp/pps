@@ -1,6 +1,6 @@
 module github.com/fzipp/pps/cmd/pps-simulate
 
-go 1.23.0
+go 1.25.0
 
 require (
 	github.com/fzipp/canvas v0.5.0
